@@ -1,0 +1,93 @@
+.wrapper {
+  background-color: rgb(199, 200, 204);
+  height: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 3rem;
+}
+
+.logoWrapper {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.logo {
+  font-size: 2rem;
+  color: black;
+}
+
+.logoImg {
+  width: 60px;
+  height: auto;
+}
+
+.links {
+  display: flex;
+  gap: 1rem;
+}
+
+.links a {
+  text-decoration: none;
+  color: black;
+}
+
+.burgerBtn {
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: none;
+}
+
+.burgerBtn img {
+  width: 100%;
+  height: 100%;
+}
+
+.mobileMenu {
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .wrapper nav {
+    display: none;
+  }
+
+  .burgerBtn {
+    display: block;
+  }
+
+  .mobileMenu {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(199, 200, 204);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: -1000px;
+    top: 80px;
+    transition: 0.4s;
+  }
+
+  .mobileMenuOpen {
+    left: 0px;
+  }
+
+  .mobileLinks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding-top: 7rem;
+  }
+
+  .mobileLinks a{
+    text-decoration: none;
+    color: black;
+    font-size: 1.2rem;
+  }
+}
