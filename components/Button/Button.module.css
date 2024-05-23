@@ -1,0 +1,17 @@
+.main {
+    padding: 0.5rem;
+    border: none;
+    cursor: pointer;
+    height: 2rem;
+    transition: 0.3s;
+  }
+  
+  .main:hover {
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  }
+  
+  .warring {
+    background-color: brown;
+    color: white;
+    font-weight: 600;
+  }

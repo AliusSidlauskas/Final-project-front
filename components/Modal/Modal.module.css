@@ -1,0 +1,53 @@
+.main{
+    position: fixed;
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+    background-color: rgb(255, 255, 255);
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 2rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    z-index: 2;
+  
+    animation: appear 0.4s;
+    animation-fill-mode: forwards;   
+}
+
+.background {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    top: 0;
+  
+    animation: backgroundAppear 0.4s;
+    animation-fill-mode: forwards;
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  @keyframes appear {
+    0% {
+      top: 15vh;
+      opacity: 0;
+    }
+  
+    100% {
+      top: 20vh;
+      opacity: 1;
+    }
+  }
+  
+  @keyframes backgroundAppear {
+    0% {
+      opacity: 0;
+    }
+  
+    100% {
+      opacity: 1;
+    }
+  }

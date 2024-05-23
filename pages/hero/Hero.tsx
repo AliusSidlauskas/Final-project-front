@@ -13,7 +13,7 @@ const Hero = () => {
       const response = await axios.get(`${process.env.SERVER_URL}/questions`);
       setQuestions(response.data.questions);
 
-      console.log("Questions:", response.data.createdQuestions);
+      console.log("Questions:", response.data.questions);
       console.log(response);
     } catch (err) {
       console.log("err", err);
