@@ -29,12 +29,13 @@ const ItemWrapper = ({ question }: ItemWrapperProps) => {
       );
 
       if (response.status === 200) {
-        router.push("/");
+        router.push("/hero/Hero");
       }
 
       console.log("response", response);
     } catch (err) {
-      if (axios.isAxiosError(err) && err.response?.status === 401) {
+      // @ts-expect-error
+      if (err.response.status === 401) {
         router.push("/login");
       } else {
         console.log(err);
@@ -46,9 +47,10 @@ const ItemWrapper = ({ question }: ItemWrapperProps) => {
   return (
     <main className={styles.wrapper}>
       <div className={styles.info}>
-        <h2>{question.title}</h2>
-        <h4>{question.questionText}</h4>
-        <h4>{question.date}</h4>
+        <h1>{question.title}</h1>
+        <h3>{question.questionText}</h3>
+        <h6>{question.date}</h6>
+        </div>
 
         <AnswerWrapper questionId={question.id} />
 
@@ -61,7 +63,6 @@ const ItemWrapper = ({ question }: ItemWrapperProps) => {
         />
 
         {error && <p className={styles.error}>{error}</p>}
-      </div>
 
       {isShowWarning && (
         <Modal

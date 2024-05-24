@@ -4,4 +4,6 @@ export type AnswerType = {
     userId: string;
     answerText: string;
     date: string;
+    likes: number;
+    dislikes: number;
   };

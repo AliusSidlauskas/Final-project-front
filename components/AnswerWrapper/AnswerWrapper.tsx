@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import axios, { isAxiosError } from "axios";
+import axios from "axios";
 import cookies from "js-cookie";
 import { useRouter } from "next/router";
 import { AnswerType } from "../../types/answer";
 import Button from "../Button/Button";
+import styles from "./AnswerWrapper.module.css"
 
 type AnswerWrapperProps = {
   questionId: string;
@@ -58,49 +59,52 @@ const AnswerWrapper = ({ questionId }: AnswerWrapperProps) => {
       if (response.status === 201) {
         console.log("Answer submitted");
         setAnswers((prevAnswers) => [...prevAnswers, response.data.answer]);
-        setAnswerText(""); 
+        setAnswerText("");
       }
 
       setLoading(false);
     } catch (err) {
-      if (axios.isAxiosError(err)) {
-        if (err.response?.status === 401) {
-          router.push("/login");
-        } else {
-          setError("Failed to submit answer");
-        }
+      // @ts-expect-error
+      if (err.response?.status === 401) {
+        router.push("/login");
+      } else {
+        setError("Failed to submit answer");
       }
       setLoading(false);
     }
   };
 
-  const deleteAnswer = async(answerId:string) => {
-    try{
-      setLoading(true)
-      const headers ={
-        authorization:cookies.get("jwt_token")
-      }
+  const deleteAnswer = async (answerId: string) => {
+    try {
+      setLoading(true);
+      const headers = {
+        authorization: cookies.get("jwt_token"),
+      };
+
       const response = await axios.delete(
-        `${process.env.SERVER_URL}/answer/${answerId}`,
-        {headers}
+        `${process.env.SERVER_URL}/question/${questionId}/answer/${answerId}`,
+        { headers }
       );
-      if(response.status === 200){
-        console.log("answer deleted");
-        setAnswers((prevAnswers) => prevAnswers.filter(answer => answer.id !== answerId))
+
+      if (response.status === 200) {
+        console.log("Answer deleted");
+        setAnswers((prevAnswers) => prevAnswers.filter(answer => answer.id !== answerId));
       }
+
       setLoading(false);
-    } catch(err){
-      if(isAxiosError(err) && err.response?.status === 401){
-        router.push("/login")
-      } else{
+    } catch (err) {
+      // @ts-expect-error
+      if (err.response?.status === 401) {
+        router.push("/login");
+      } else {
         setError("Failed to delete answer");
       }
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
-    <div>
+    <div className={styles.wrapper}>
       <input
         type="text"
         value={answerText}

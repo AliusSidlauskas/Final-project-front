@@ -1,9 +1,25 @@
+.link{
+  text-decoration: none;
+  color: black;
+}
+
 .wrapper {
-    width: 14rem;
-    height: 20rem;
-    background-color: rgb(248, 248, 248);
-    box-sizing: border-box;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
-      rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
-      transition: 0.3s;
-    }
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: brightness(96%);
+  border-radius: 8px;
+  max-width: 1000px;
+  height: auto;
+  margin :1rem 5rem;
+  border: solid, 1px;
+
+}
+
+.wrapper h2,
+.wrapper h4,
+.wrapper h6,
+.wrapper p{
+  margin:5px;
+  padding: 5px;
+}
+

@@ -4,6 +4,7 @@ import styles from "./Hero.module.css";
 import PageTemplate from "../../components/PageTemplate/PageTemplate";
 import { QuestionType } from "../../types/question";
 import CardsWrapper from "../../components/CardWrapper/CardsWrapper";
+import Link from "next/link";
 
 const Hero = () => {
   const [questions, setQuestions] = useState<QuestionType[] | null>(null);
@@ -27,6 +28,9 @@ const Hero = () => {
   return (
     <PageTemplate>
       <div className={styles.main}>
+      <div className={styles.linkWrapper}>
+        <Link className={styles.link} href="/add-question">Post your question</Link>
+      </div>
         {questions && <CardsWrapper questions={questions} />}
       </div>
     </PageTemplate>

@@ -1,6 +1,7 @@
 body{
     margin: 0;
-    background-color:rgb(227, 225, 217);
+    background: rgb(242,237,229);
+    background: linear-gradient(0deg, rgba(242,237,229,1) 18%, rgba(170,173,176,1) 68%);
     max-width: 1200px;
     margin: auto;
 }
