@@ -34,17 +34,13 @@ const Header = ({ logo, links }: HeaderProps) => {
 
       <nav>
         <ul className={styles.links}>
-          {links
-            // Filter out login and sign-in links if user is authenticated
-            .filter(
-              (link) =>
-                link.title !== "Sign In" && link.title !== "Login"
-            )
-            .map((link) => (
+          {links.map((link) => {
+            return (
               <a href={link.href} key={link.id}>
                 {link.title}
               </a>
-            ))}
+            );
+          })}
         </ul>
       </nav>
 

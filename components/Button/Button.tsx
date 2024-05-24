@@ -8,6 +8,7 @@ type ButtonProps = {
   title: string;
   type?: "WARNING" | "NORMAL";
   className?: string;
+  disabled?: boolean;
 };
 
 const Button = ({
