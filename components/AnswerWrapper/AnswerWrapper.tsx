@@ -4,7 +4,7 @@ import cookies from "js-cookie";
 import { useRouter } from "next/router";
 import { AnswerType } from "../../types/answer";
 import Button from "../Button/Button";
-import styles from "./AnswerWrapper.module.css"
+import styles from "./AnswerWrapper.module.css";
 
 type AnswerWrapperProps = {
   questionId: string;
@@ -82,13 +82,15 @@ const AnswerWrapper = ({ questionId }: AnswerWrapperProps) => {
       };
 
       const response = await axios.delete(
-        `${process.env.SERVER_URL}/question/${questionId}/answer/${answerId}`,
+        `${process.env.SERVER_URL}/answer/${answerId}`,
         { headers }
       );
 
       if (response.status === 200) {
         console.log("Answer deleted");
-        setAnswers((prevAnswers) => prevAnswers.filter(answer => answer.id !== answerId));
+        setAnswers((prevAnswers) =>
+          prevAnswers.filter((answer) => answer.id !== answerId)
+        );
       }
 
       setLoading(false);
@@ -105,12 +107,13 @@ const AnswerWrapper = ({ questionId }: AnswerWrapperProps) => {
 
   return (
     <div className={styles.wrapper}>
-      <input
-        type="text"
+      <textarea
         value={answerText}
         onChange={(e) => setAnswerText(e.target.value)}
         placeholder="Leave an answer"
         disabled={!cookies.get("jwt_token")}
+        rows={4}
+        cols={50}
       />
 
       <Button
@@ -121,11 +124,11 @@ const AnswerWrapper = ({ questionId }: AnswerWrapperProps) => {
       />
 
       {answers.map((answer) => (
-        <div key={answer.id}>
-          <p>{answer.answerText}</p>
-          <span>{answer.date}</span>
+        <div className={styles.container} key={answer.id}>
+          <h4>{answer.answerText}</h4>
+          <h6>{answer.date}</h6>
           {cookies.get("jwt_token") && (
-            <button onClick={() => deleteAnswer(answer.id)}>Delete</button>
+            <button onClick={() => deleteAnswer(answer.id)}>Delete answer</button>
           )}
         </div>
       ))}

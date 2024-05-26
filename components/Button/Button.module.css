@@ -10,8 +10,13 @@
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   }
   
-  .warring {
-    background-color: brown;
+  .warning {
+    background-color: rgb(134, 132, 132);
     color: white;
-    font-weight: 600;
+    font-weight: 500;
+    border-radius: 8px;
   }
+
+  .warning:hover{
+    background-color: #4e4d4e;
+}

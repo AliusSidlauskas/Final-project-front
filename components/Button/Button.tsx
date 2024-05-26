@@ -20,7 +20,7 @@ const Button = ({
 }: ButtonProps) => {
   return (
     <button
-    className={`${styles.main} ${type === "WARNING" && styles.warring} ${
+    className={`${styles.main} ${type === "WARNING" && styles.warning} ${
       className && className
     }`}
     onClick={onClick}

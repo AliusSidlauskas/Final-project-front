@@ -21,6 +21,7 @@
 .deleteButton {
   justify-self: end;
   align-items: end;
+  margin-top: 10px;
 }
 
 @keyframes appear {
