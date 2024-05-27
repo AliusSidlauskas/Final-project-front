@@ -49,7 +49,7 @@ const ItemWrapper = ({ question }: ItemWrapperProps) => {
       <div className={styles.info}>
         <h1>{question.title}</h1>
         <h3>{question.questionText}</h3>
-        <h6>{question.date}</h6>
+        <h6>{`Created on: ${question.date}`}</h6>
         </div>
 
         <AnswerWrapper questionId={question.id} />

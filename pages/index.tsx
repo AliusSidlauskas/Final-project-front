@@ -10,7 +10,7 @@ const index = () => {
       <Image alt="logo" className={styles.logo} src={logo} />
       <h1>WELCOME</h1>
       <h2>Ask, or will be asked</h2>
-      <p>Feel free, to ask any question, find the right answer (or not very right), if you know everything, show your wisdom and help the other askers. Let's go!!!</p>
+      <p>Feel free, to ask any question, find the right answer (or not very right), if you know everything, show your wisdom and help the other askers. Let&lsquo;s go!!!</p>
       <Link href="./hero/Hero" className={styles.link}>
         Please, Welcome
       </Link>

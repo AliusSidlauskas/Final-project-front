@@ -65,7 +65,7 @@ const AnswerWrapper = ({ questionId }: AnswerWrapperProps) => {
       setLoading(false);
     } catch (err) {
       // @ts-expect-error
-      if (err.response?.status === 401) {
+      if (err.response.status === 401) {
         router.push("/login");
       } else {
         setError("Failed to submit answer");
@@ -96,12 +96,56 @@ const AnswerWrapper = ({ questionId }: AnswerWrapperProps) => {
       setLoading(false);
     } catch (err) {
       // @ts-expect-error
-      if (err.response?.status === 401) {
+      if (err.response.status === 401) {
         router.push("/login");
       } else {
         setError("Failed to delete answer");
       }
       setLoading(false);
+    }
+  };
+
+  const handleLikeDislike = async (answerId: string, action: string) => {
+    try {
+      const headers = {
+        authorization: cookies.get("jwt_token"),
+      };
+
+      const data = {
+        userId: cookies.get("user_id"),
+        answerId: answerId,
+      };
+
+      const url =
+        action === "like"
+          ? `${process.env.SERVER_URL}/answer/like`
+          : `${process.env.SERVER_URL}/answer/dislike`;
+
+      const response = await axios.post(url, data, { headers });
+
+      if (response.status === 201) {
+        console.log("success");
+        setAnswers((prevAnswers) =>
+          prevAnswers.map((answer) =>
+            answer.id === answerId
+              ? {
+                  ...answer,
+                  likeCount:
+                    action === "like"
+                      ? response.data.likeCount
+                      : answer.likeCount,
+                  dislikeCount:
+                    action === "dislike"
+                      ? response.data.dislikeCount
+                      : answer.dislikeCount,
+                }
+              : answer
+          )
+        );
+      }
+    } catch (err) {
+      console.error("Failed", err);
+      setError("Failed");
     }
   };
 
@@ -126,9 +170,17 @@ const AnswerWrapper = ({ questionId }: AnswerWrapperProps) => {
       {answers.map((answer) => (
         <div className={styles.container} key={answer.id}>
           <h4>{answer.answerText}</h4>
-          <h6>{answer.date}</h6>
+          <h6>{`Created on: ${answer.date}`}</h6>
+          <div className={styles.results}>
+            <h6>Likes: {answer.likeCount}</h6>
+            <h6>Dislikes: {answer.dislikeCount}</h6>
+          </div>
           {cookies.get("jwt_token") && (
-            <button onClick={() => deleteAnswer(answer.id)}>Delete answer</button>
+            <div className={styles.actionButtons}>
+              <button onClick={() => handleLikeDislike(answer.id, "like")}>Like</button>
+              <button onClick={() => handleLikeDislike(answer.id, "dislike")}>Dislike</button>
+              <button onClick={() => deleteAnswer(answer.id)}>Delete answer</button>
+            </div>
           )}
         </div>
       ))}
