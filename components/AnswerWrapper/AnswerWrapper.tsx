@@ -170,7 +170,7 @@ const AnswerWrapper = ({ questionId }: AnswerWrapperProps) => {
       {answers.map((answer) => (
         <div className={styles.container} key={answer.id}>
           <h4>{answer.answerText}</h4>
-          <h6>{`Created on: ${answer.date}`}</h6>
+          <h6>{`Created in: ${answer.date}`}</h6>
           <div className={styles.results}>
             <h6>Likes: {answer.likeCount}</h6>
             <h6>Dislikes: {answer.dislikeCount}</h6>

@@ -33,7 +33,7 @@ const Card = ({id, title, questionText, date}:CardProps) => {
     <div className={styles.wrapper}>
         <h2>{title}</h2>
         <h4>{questionText}</h4>
-        <h6>{date}</h6>
+        <h6>{`Created in: ${date}`}</h6>
         <p>{answerCount} {answerCount === 1 ? 'answer' : 'answers'}</p>
     </div>
     </Link>

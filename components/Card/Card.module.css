@@ -6,7 +6,6 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  backdrop-filter: brightness(96%);
   border-radius: 8px;
   max-width: 1000px;
   height: auto;

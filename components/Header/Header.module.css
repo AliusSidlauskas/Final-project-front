@@ -1,6 +1,10 @@
 .wrapper {
-  background: rgb(242,237,229);
-  background: linear-gradient(0deg, rgba(242,237,229,1) 4%, rgba(170,173,176,1) 85%);
+  background: rgb(242, 237, 229);
+  background: linear-gradient(
+    0deg,
+    rgba(242, 237, 229, 1) 4%,
+    rgba(170, 173, 176, 1) 85%
+  );
   height: 6rem;
   display: flex;
   align-items: center;
@@ -65,12 +69,17 @@
   .mobileMenu {
     display: flex;
     justify-content: center;
-    background-color: rgba(199, 200, 204, 1);
+    background: rgb(242, 237, 229);
+    background: linear-gradient(
+      180deg,
+      rgba(242, 237, 229, 1) 4%,
+      rgba(170, 173, 176, 1) 85%
+    );
     position: fixed;
     width: 100%;
     height: 100%;
     right: -1000px;
-    top: 80px;
+    top: 100px;
     transition: 0.4s;
   }
 
@@ -86,7 +95,7 @@
     padding-top: 7rem;
   }
 
-  .mobileLinks a{
+  .mobileLinks a {
     text-decoration: none;
     color: black;
     font-size: 1.2rem;

@@ -8,7 +8,9 @@
   
 }
 .link{
-    text-decoration: none;
+    font-size: large;
+    font-weight: 700;
+    font-style: oblique;
     color:black;
     padding-left: 5rem;
     margin-top: 2rem;
